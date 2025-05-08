@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn HTML5 - Master Web Development on Android</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="LearnHtml5Logo.png" style="border-radius: 30%;">
+    <link rel="icon" type="image/png" sizes="16x16" href="LearnHtml5Logo.png" style="border-radius: 30%;">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e44d26">
+    <meta name="msapplication-TileColor" content="#e44d26">
+    <meta name="theme-color" content="#e44d26">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #e44d26; /* HTML5 orange */
+            --secondary: #f16529;
+            --dark: #2c3e50;
+            --light: #f5f5f5;
+            --accent: #3498db;
+            --code-bg: #282c34;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .play-store-btn {
+            display: flex;
+            align-items: center;
+            background-color: var(--dark);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        
+        .play-store-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .play-store-btn i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        /* Code Example Section */
+        .code-example {
+            padding: 100px 0;
+            background-color: var(--code-bg);
+            color: white;
+        }
+        
+        .code-container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .code-header {
+            background-color: #3d3d3d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-dots {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+        
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red {
+            background-color: #ff5f56;
+        }
+        
+        .dot-yellow {
+            background-color: #ffbd2e;
+        }
+        
+        .dot-green {
+            background-color: #27c93f;
+        }
+        
+        .code-title {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .code-content {
+            padding: 20px;
+            font-family: 'Source Code Pro', monospace;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .token.tag {
+            color: #e06c75;
+        }
+        
+        .token.attr-name {
+            color: #d19a66;
+        }
+        
+        .token.attr-value {
+            color: #98c379;
+        }
+        
+        .token.comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        
+        /* Curriculum Section */
+        .curriculum {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .modules {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .module {
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+        }
+        
+        .module h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .module ul {
+            list-style-position: inside;
+            color: #666;
+        }
+        
+        .module li {
+            margin-bottom: 5px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 80px;
+            color: var(--primary);
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            color: #555;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .rating {
+            color: #FFC107;
+            margin-top: 5px;
+        }
+        
+        /* Download Section */
+        .download {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .download h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .download p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .screenshot-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .screenshot-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .screenshot-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .screenshot-slider::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .screenshot {
+            scroll-snap-align: start;
+            min-width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .download-buttons {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="LearnHtml5Logo.png" alt="Learn HTML5 Logo" style="border-radius: 30%;">
+                    <h1>Learn HTML5</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#download" class="cta-button">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Learn <span>HTML5</span> on Your Android Device</h1>
+                <p>Master web development with our comprehensive HTML5 learning app. Perfect for beginners and experienced developers alike, with interactive lessons, real-world examples, and hands-on exercises.</p>
+                <div class="download-buttons" style="justify-content: center; margin-bottom: 20px;">
+                    <a href="https://play.google.com/store/apps/details?id=com.learnhtml5" class="play-store-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div>
+                            <div style="font-size: 10px;">GET IT ON</div>
+                            <div>Google Play</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="LearnHTML5.png" alt="Learn HTML5 App Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Learn HTML5?</h2>
+                <p>Our app provides everything you need to become proficient in modern HTML5 development</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Interactive Lessons</h3>
+                    <p>Engaging, hands-on tutorials that teach you HTML5 concepts through practical examples.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-Optimized</h3>
+                    <p>Learn anywhere, anytime with our mobile-friendly interface designed for small screens.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Real-time Preview</h3>
+                    <p>See your code results instantly with our built-in HTML5 preview feature.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Projects & Challenges</h3>
+                    <p>Test your knowledge with practical projects and coding challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Certification</h3>
+                    <p>Earn a certificate upon completion to showcase your HTML5 skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>We constantly add new content to keep up with the latest HTML5 standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Example Section -->
+    <section class="code-example">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Learn By Example</h2>
+                <p style="color: #bbb;">See the quality of our code examples and tutorials</p>
+            </div>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                    <div class="code-title">example.html</div>
+                </div>
+                <div class="code-content">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;HTML5 Document&lt;/title&gt;
+    &lt;!-- Our app teaches you semantic HTML5 --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Welcome to My Page&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;HTML5 Features&lt;/h2&gt;
+            &lt;p&gt;Learn all about semantic elements, forms, and APIs.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2023 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comprehensive Curriculum</h2>
+                <p>Our structured learning path takes you from beginner to proficient HTML5 developer</p>
+            </div>
+            <div class="modules">
+                <div class="module">
+                    <h3>Module 1: HTML5 Fundamentals</h3>
+                    <ul>
+                        <li>Document structure and syntax</li>
+                        <li>Text formatting and semantic elements</li>
+                        <li>Creating links and navigation</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 2: Forms and User Input</h3>
+                    <ul>
+                        <li>Building HTML5 forms</li>
+                        <li>New input types and attributes</li>
+                        <li>Form validation techniques</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 3: Multimedia Elements</h3>
+                    <ul>
+                        <li>Embedding audio and video</li>
+                        <li>Canvas and SVG graphics</li>
+                        <li>Responsive images with srcset</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 4: Advanced Features</h3>
+                    <ul>
+                        <li>Web Storage API</li>
+                        <li>Geolocation API</li>
+                        <li>Drag and drop functionality</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <!-- <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+                <p>Don't just take our word for it. Here's what our users think about Learn HTML5</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        This app made learning HTML5 so much easier than any other resource I've tried. The examples are clear and the exercises really help reinforce what you learn.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>John Doe</h4>
+                            <p>Beginner Developer</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        As a busy professional, I love that I can learn during my commute. The bite-sized lessons are perfect for mobile learning, and the real-time preview is genius!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Anna Smith</h4>
+                            <p>Marketing Professional</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        I've been coding for years but wanted to update my skills to HTML5. This app covers everything from basics to advanced features in a well-organized way.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Miguel Rodriguez</h4>
+                            <p>Web Developer</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+     <!-- Screenshots Section -->
+     <section class="screenshots" id="screenshots">
+        <div class="container">
+            <div class="section-title">
+                <h2>App Screenshots</h2>
+                <p>Take a look at the beautiful and intuitive interface of Magical AI</p>
+            </div>
+            <div class="screenshot-slider">
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 1.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 2.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 3.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 4.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 5.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 6.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 7.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 8.jpg" alt="Learn Html5 ">
+                </div>
+                <div class="screenshot">
+                    <img src="./LearnHTML5PNG/Phone Screenshot 9.jpg" alt="Learn Html5 ">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2>Start Learning HTML5 Today</h2>
+            <p>Download now and begin your web development journey. Free to try with premium content available.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.learnhtml5" class="play-store-btn">
+                <i class="fab fa-google-play"></i>
+                <div>
+                    <div style="font-size: 10px;">GET IT ON</div>
+                    <div>Google Play</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Learn HTML5</h3>
+                    <p>Your complete mobile solution for learning modern web development with HTML5, CSS, and JavaScript.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/patel-harshal"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/harshal1882001/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/programmers0_0"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/programmers0_0/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/harshal-bhagat21/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#curriculum">Curriculum</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for web development tips and app updates.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button type="submit" class="cta-button" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Learn HTML5. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
